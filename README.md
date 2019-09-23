@@ -17,7 +17,7 @@ Puedes clonar este proyecto
 ```
 git clone https://github.com/chuzasjota/colors.git
 ```
-- Esto clonara el proyecto en su maquina, luego debe puede ingresar a la carpeta del proyecto e instalar las dependencias
+- Esto clonara el proyecto en su maquina, luego debe ingresar a la carpeta del proyecto e instalar las dependencias
 
 ## Instalar dependecias
 ```

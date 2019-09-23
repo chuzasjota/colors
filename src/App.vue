@@ -9,9 +9,10 @@
     </section>
     <div class="container">
       <div class="columns is-desktop is-tablet is-mobile is-multiline is-centered">
+        <!-- Llamado al componente Color - Impresion de cada color -->
         <color v-for="color in colors" :key="color.id" v-bind:color="color"/>
       </div>
-      <nav class="pagination" role="navigation" aria-label="pagination">
+      <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <a class="pagination-previous" v-on:click="changePage( page - 1 )">Anterior</a>
         <ul class="pagination-list">
           <li>
@@ -43,28 +44,34 @@ export default {
     };
   },
   created() {
-    this.fetch()
+    this.allColors();
   },
-  methods:{
-    fetch(){
+  methods: {
+    // Funcion que lista todos los colores + parametro de pagina siguiente
+    allColors() {
       const params = {
         page: this.page
-      }
+      };
       let result = axios
-      .get("https://reqres.in/api/colors", {params})
-      .then(res => {
-        this.colors = res.data.data;
-        this.pages = res.data.total_pages;
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+        .get("https://reqres.in/api/colors", { params })
+        .then(res => {
+          this.colors = res.data.data;
+          this.pages = res.data.total_pages;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
-    changePage(page){
-      this.page = page <= 0 || page > this.pages ? this.pages : page
-      this.fetch()
+    //Funcion para interactuar y validar paginador
+    changePage(page) {
+      this.page = page <= 0 || page > this.pages ? this.page : page;
+      this.allColors();
     }
   }
 };
 </script>
+<style lang="scss" scoped>
+.container {
+  margin-top: 2rem;
+}
+</style>

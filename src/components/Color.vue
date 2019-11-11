@@ -8,18 +8,22 @@
     >
       <!-- Estilos en linea para llamar el color como background -->
       <!-- Llamado de la información de los colores en estructura card -->
-      <div class="card" :style="{'background-color': color.color}">
-        <header class="card-header">
-          <p class="card-header-title">{{color.year}}</p>
-        </header>
-        <div class="card-content">
-          <div class="content has-text-centered">
-            <h2>{{title}}</h2>
-            <p>{{color.color}}</p>
-          </div>
+      <div class="card">
+        <div class="card-content" :style="{'background-color': color.color}">
+          <p class="title title-color is-5 has-text-centered" :style="{'color': color.color}">
+            {{ color.color }}
+          </p>
+        </div>
+        <div class="content">
+          <h1 class="title is-4">{{ title }}</h1>
         </div>
         <footer class="card-footer">
-          <p class="card-footer-item">{{color.pantone_value}}</p>
+          <p class="card-footer-item">
+            {{ color.year }}
+          </p>
+          <p class="card-footer-item">
+            {{ color.pantone_value }}
+          </p>
         </footer>
       </div>
     </a>
@@ -49,13 +53,28 @@ export default {
 </script>
 <style lang="scss" scoped>
 .card {
-  border-radius: 10px;
-  .card-header {
-    box-shadow: none;
+  border-radius:25px;
+  .card-content {
+    border-top-left-radius:25px;
+    border-top-right-radius:25px;
+    .title-color {
+      background-color: white;
+      border-radius: 50px;
+      width: 30%;
+      padding: 0.3rem;
+    }
+  }
+  .content {
+    padding-left: 0.625rem;
+    padding-top: 0.6rem;
   }
   .card-footer {
     border-top: none;
+    color: #A8A8A8;
     .card-footer-item {
+      &:first-child {
+        justify-content: flex-start;
+      }
       justify-content: flex-end;
     }
   }

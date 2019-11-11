@@ -1,11 +1,17 @@
 import Vue from "vue";
+import Buefy from "buefy";
 import Clipboard from "v-clipboard";
+import "buefy/dist/buefy.css";
+
 import App from "./App.vue";
 
-import bulma from "../node_modules/bulma/css/bulma.min.css";
+Vue.use(Buefy, {
+  defaultIconPack: "fas"
+});
+
+Vue.use(Clipboard);
 
 Vue.config.productionTip = false;
-Vue.use(Clipboard);
 
 new Vue({
   render: h => h(App)

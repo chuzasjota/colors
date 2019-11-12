@@ -40,13 +40,22 @@ export default {
     };
   },
   methods: {
-    //Funcion que cambia el titulo al momento de copiar el color
+    //Funcion que muestra un mensaje al momento de copiar el color
     clipboardOk({ value, event }) {
-      this.title = "Copiado!";
+      this.$buefy.toast.open({
+        duration: 2000,
+        message: `Se ha copiado el color ${ this.title } correctamente!`,
+        position: 'is-top'
+      })
     },
     //Error para la funcion de copy
     clipboardError({ value, event }) {
-      console.log("error", value);
+      this.$buefy.toast.open({
+        duration: 2000,
+        message: `No se ha copiado el color ${ this.title }`,
+        position: 'is-bottom',
+        type: 'is-danger'
+      })
     }
   }
 };
@@ -74,6 +83,7 @@ export default {
     .card-footer-item {
       &:first-child {
         justify-content: flex-start;
+        border-right: none;
       }
       justify-content: flex-end;
     }

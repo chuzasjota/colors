@@ -14,13 +14,13 @@
         <color v-for="color in colors" :key="color.id" v-bind:color="color"/>
       </div>
       <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <a class="pagination-previous" v-on:click="changePage( page - 1 )">Anterior</a>
+        <a class="pagination-previous" v-on:click="changePage( page - 1 )"><i class="fas fa-chevron-left"></i></a>
         <ul class="pagination-list">
           <li>
             <a class="pagination-link is-current">{{page}}</a>
           </li>
         </ul>
-        <a class="pagination-next" v-on:click="changePage( page + 1 )">Siguiente</a>
+        <a class="pagination-next" v-on:click="changePage( page + 1 )"><i class="fas fa-chevron-right"></i></a>
       </nav>
     </div>
   </div>
@@ -81,4 +81,15 @@ html{
   height: 2px;
   background: linear-gradient(270deg, #32C5FF 0%, #B620E0 51.26%, #F7B500 100%);
 }
+
+.pagination-previous, .pagination-next, .pagination-link {
+  border-color: transparent;
+}
+
+.pagination-link.is-current {
+  background-color: #00AEFF;
+  border-color: #00AEFF;
+  border-radius: 10px;
+}
+
 </style>
